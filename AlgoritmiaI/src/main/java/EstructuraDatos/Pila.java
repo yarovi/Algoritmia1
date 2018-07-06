@@ -21,12 +21,9 @@ public class Pila {
 				agrego = nodo.agregar(ele);
 				if (agrego == true)
 					largo++;
-
 			}
 		}
-
 		return agrego;
-
 	}
 
 	public Nodo buscar(Object ele) {
