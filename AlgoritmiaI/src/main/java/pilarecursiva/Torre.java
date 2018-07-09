@@ -24,12 +24,32 @@ public class Torre {
 		}catch(Exception e) {
 			System.out.println("Error moviendo :" + e.getMessage());		}
 	}
+	void movimientoTorreAlgoritmo(int disco, int a, int b, int c) {
+		try {
+			
+			if(disco==1) {
+				Nodo dato = torrePila[a].eliminar();
+				torrePila[c].agregar(dato.ObtenerObjeto());
+				mostrarTorre();
+			}else {
+				movimientoTorreAlgoritmo(disco - 1, a, c,b);
+				Nodo dato = torrePila[a].eliminar();
+				torrePila[c].agregar(dato.ObtenerObjeto());
+				mostrarTorre();
+				movimientoTorreAlgoritmo(disco - 1, b,a,c);
+				//mostrarTorre();
+			}
+		}catch(Exception e) {
+			System.out.println("Error moviendo :" + e.getMessage());		}
+		
+	}
+	
 	public void llenarTorre() {
 		for (int i = n; i > 0; i--)
 			torrePila[1].agregar(i * 10);
 		torrePila[1].imprimir();
 		mostrarTorre();
-		movimientoTorre(n , 1, 2, 3);
+		movimientoTorreAlgoritmo(n , 1, 2, 3);
 	}
 	void mostrarTorre() {
 		int t=0;
