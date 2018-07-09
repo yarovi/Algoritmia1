@@ -3,8 +3,7 @@ package EstructuraDatos;
 public class ListaEnlazada {
 
 	Nodo nodo;
-	int largo;
-	
+	int largo;	
 	public boolean agregar(Object ele) {
 		
 		boolean agrego=false;
@@ -13,16 +12,13 @@ public class ListaEnlazada {
 		if(nodoBuscado==null) {
 			if(nodo==null) {
 				nodo=nuevoNodo;
-				largo++;
-				
-			}else {
-				
+				largo++;				
+			}else {				
 				if(nodo.comparador(nodo.dato, ele)>0) {
 					nuevoNodo.setSiguienteNodo(nodo);
 					nodo=nuevoNodo;
 					nuevoNodo.getSiguienteNodo().setAnteriorNodo(nuevoNodo);
-					largo++;
-					
+					largo++;					
 				}else {
 					agrego=nodo.agregar(ele);
 					if(agrego==true)
@@ -30,22 +26,15 @@ public class ListaEnlazada {
 				}				
 			}				
 		}		
-		
-		return agrego;
-		
-	}
-	
+		return agrego;		
+	}	
 	public Nodo buscar(Object ele) {
 		
 		Nodo rpta =null;
-		if(nodo!=null)
-		{
-			rpta=nodo.buscar(ele);
-			
-		}
+		if(nodo!=null)	{
+			rpta=nodo.buscar(ele);	}
 		return rpta;
-	}
-	
+	}	
 	public Nodo eliminar(Object ele) {		
 		Nodo eliminado=buscar(ele);		
 		if(eliminado!=null) {
@@ -54,29 +43,25 @@ public class ListaEnlazada {
 		}
 		return eliminado;
 	}
-	public int totalElemento()
-	{
-		return largo;
-	}
+	public int totalElemento(){
+		return largo;}
 	
 	public void imprimir() {
 		Nodo actualNodo = nodo;
-
+		int i=largo;
 		while (actualNodo != null) {
-			System.out.printf("[%s]-->", actualNodo.dato);
-//			if (actualNodo.getSiguienteNodo().siguienteNodo != null)
-//				System.out.printf("[%s][%s,%s] -->", actualNodo.dato,actualNodo.getSiguienteNodo(),actualNodo.getAnteriorNodo());
-//			else
-//				System.out.printf("%s", actualNodo.dato);
+			i--;
+			if (actualNodo.getSiguienteNodo() != null)
+				System.out.printf("{%s,[%s]} -->",i, actualNodo.dato);
+			else
+				System.out.printf("{%s, [%s]}",i, actualNodo.dato);
 			actualNodo = actualNodo.siguienteNodo;
 		}
 		System.out.println("\n");
-	}
-	
+	}	
 	public boolean estaVacia() {
 		return nodo == null;
-	}
-	
+	}	
 	public Nodo obtenerElemetno() {
 		return nodo;
 	}
