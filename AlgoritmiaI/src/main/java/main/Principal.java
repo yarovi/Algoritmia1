@@ -20,6 +20,9 @@ public class Principal {
 		
 		Menu nuevoMenu3=new Menu();
 		nuevoMenu3.probarTorreHanoi();
+		
+//		Menu nuevoMenu4=new Menu();
+//		nuevoMenu4.probarCola();
 	}
 
 }

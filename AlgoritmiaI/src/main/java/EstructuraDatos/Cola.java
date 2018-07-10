@@ -2,57 +2,69 @@ package EstructuraDatos;
 
 public class Cola {
 
-	Nodo raiz,fondo;
+	Nodo cabezita, colita;
 	int largo;
+
 	public boolean estaVacia() {
-		return raiz==fondo;
+		return cabezita == colita;
 	}
-	
-	public boolean agregar(Object ele) {
-		
+
+	public boolean encolar(Object ele) {
+
 		boolean agrego = false;
 		Nodo nodoBuscado = buscar(ele);
 		Nodo nuevoNodo = new Nodo(ele);
 		if (nodoBuscado == null) {
-			if (raiz == null) {
-				raiz = nuevoNodo;
-				fondo=nuevoNodo;
+			if (cabezita == null) {
+				cabezita = nuevoNodo;
 				largo++;
-				
 			} else {
-
-//				agrego = nuevoNodo.agregarCola(nodo);
-//				if (agrego == true) {
-//					largo++;
-//					nodo=nuevoNodo;
-//					//nodo=nodo.siguienteNodo;
-//				}
+				agrego = cabezita.agregarCola(nuevoNodo);
+				if (agrego == true) {
+					largo++;
+					colita = nuevoNodo;
+				}
 			}
 		}
 		return agrego;
 	}
-	
+
+	public void desencolar() {
+		
+		if(estaVacia()) {
+			largo--;
+			System.out.printf("Cola Vacia. \n");}
+		else {
+			largo--;
+			Nodo aux=cabezita;
+			System.out.printf("elemento eliminado : %s\n",aux.dato);
+			cabezita=aux.siguienteNodo;			
+			desencolar();
+			
+		}
+	}
 	public Nodo buscar(Object ele) {
 
 		Nodo rpta = null;
-		if (raiz != null) {
-			rpta = raiz.buscar(ele);
+		if (cabezita != null) {
+			rpta = cabezita.buscar(ele);
 
 		}
 		return rpta;
 	}
+
 	public void imprimir() {
-		Nodo actualNodo = raiz;
-		int i=largo;
+		Nodo actualNodo = cabezita;
+		int i = 0;
 		while (actualNodo != null) {
-			System.out.printf("[indice:%s] --- >[%s] \n",i, actualNodo.dato);
+			System.out.printf("[indice:%s] --- >[%s] \n", i, actualNodo.dato);
 			actualNodo = actualNodo.siguienteNodo;
-			i--;
+			i++;
 		}
 		System.out.println("\n");
 	}
-	public int totalElemento()
-	{
+
+	public int totalElemento() {
 		return largo;
 	}
 }

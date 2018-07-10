@@ -2,6 +2,8 @@ package main;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+
+import EstructuraDatos.Cola;
 import EstructuraDatos.ListaEnlazada;
 import EstructuraDatos.Nodo;
 import EstructuraDatos.Pila;
@@ -16,12 +18,12 @@ public class Menu {
 
 		// numeros positivos
 		ListaEnlazada nuevaLista = new ListaEnlazada();
-		for (int i = 0; i < 5; i++) {
-			nuevaLista.agregar(i);
-		}
-		System.out.printf("\t\tLISTA SOLO NUMEROS POSITIVOS\n");
-		System.out.printf("Tamaño de la lista numerica [+]: %s\n", nuevaLista.totalElemento());
-		nuevaLista.imprimir();
+//		for (int i = 0; i < 5; i++) {
+//			nuevaLista.agregar(i);
+//		}
+//		System.out.printf("\t\tLISTA SOLO NUMEROS POSITIVOS\n");
+//		System.out.printf("Tamaño de la lista numerica [+]: %s\n", nuevaLista.totalElemento());
+//		nuevaLista.imprimir();
 
 		// numeros positivos y megaticos
 		int[] vectorNumero = { 20, -2, 3, 5, 18, -9 };
@@ -118,5 +120,18 @@ public class Menu {
 			return false;
 		}
 
+	}
+	
+	public void probarCola() {
+		Cola nuevaCola = new Cola();
+		int[] vectorNumero = { 20, -2, 3, 5, 18, -9 };
+		for (int i = 0; i < vectorNumero.length; i++) {
+			nuevaCola.encolar(vectorNumero[i]);
+		}
+		System.out.printf("largo de la colita [+-]: %s \n",	nuevaCola.totalElemento());
+		nuevaCola.imprimir();
+		nuevaCola.desencolar();
+		System.out.printf("largo de la colita [+-]: %s \n",nuevaCola.totalElemento());
+		
 	}
 }

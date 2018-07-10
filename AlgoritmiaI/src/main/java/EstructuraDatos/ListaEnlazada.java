@@ -14,7 +14,7 @@ public class ListaEnlazada {
 				nodo=nuevoNodo;
 				largo++;				
 			}else {				
-				if(nodo.comparador(nodo.dato, ele)>0) {
+				if(nodo.comparador(nodo.ObtenerObjeto(), ele)>0) {
 					nuevoNodo.setSiguienteNodo(nodo);
 					nodo=nuevoNodo;
 					nuevoNodo.getSiguienteNodo().setAnteriorNodo(nuevoNodo);

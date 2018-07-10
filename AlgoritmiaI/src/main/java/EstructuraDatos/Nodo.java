@@ -27,8 +27,17 @@ public class Nodo {
 		if (siguienteNodo == null) {
 			siguienteNodo = new Nodo(ele);
 			siguienteNodo.anteriorNodo = this;
-			return true;
-		} else
+			rpta= true;
+		}
+		else if(comparador(siguienteNodo.dato, ele)>0) {
+			Nodo temp=siguienteNodo;
+			siguienteNodo=new Nodo(ele);
+			siguienteNodo.anteriorNodo=temp.getAnteriorNodo();
+			siguienteNodo.anteriorNodo.siguienteNodo=siguienteNodo;
+			siguienteNodo.siguienteNodo=temp;
+			temp.setAnteriorNodo(siguienteNodo);			
+			rpta=true;
+		}else
 			rpta = siguienteNodo.agregar(ele);
 		return rpta;
 	}
@@ -44,7 +53,7 @@ public class Nodo {
 		return rpta;
 	}
 
-	public boolean agregarColaPila(Nodo nodo) {
+	public boolean agregarCola(Nodo nodo) {
 
 		boolean rpta = false;
 		if (siguienteNodo == null) {
@@ -93,9 +102,9 @@ public class Nodo {
 			String cadena = (String) obj;
 			return cadena.compareTo(cadena2);
 		} else if (obj instanceof Integer) {
-			Integer valor1 = (Integer) obj;
 			Integer valor2 = (Integer) obj2;
-			return valor1.compareTo(valor2);
+			Integer valor = (Integer) obj;
+			return valor.compareTo(valor2);
 		}
 		return 0;
 	}
