@@ -51,6 +51,21 @@ public class Pila {
 		return eliminado;
 	}
 
+	public void eliminarRecursiva() {
+
+		//Nodo eliminado = buscar(nodo.dato);
+		if (nodo.getSiguienteNodo() == null) {
+			nodo=null;
+			largo--;
+		} else {
+			System.out.printf("elemento eliminado : %s\n",nodo.dato);
+
+			nodo = nodo.getSiguienteNodo();
+			largo--;
+			eliminarRecursiva();
+		}
+		
+	}
 	public void imprimir() {
 		Nodo noddoAux = nodo;
 		int i = largo;

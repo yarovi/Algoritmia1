@@ -25,15 +25,20 @@ public class ListaEnlazada {
 						largo++;
 				}				
 			}				
-		}		
+		}
+		
+		
 		return agrego;		
 	}	
 	public Nodo buscar(Object ele) {
 		
 		Nodo rpta =null;
 		if(nodo!=null)	{
-			rpta=nodo.buscar(ele);	}
+			nodo.setposNodo(largo);
+			rpta=nodo.buscar(ele);	
+			}
 		return rpta;
+
 	}	
 	public Nodo eliminar(Object ele) {		
 		Nodo eliminado=buscar(ele);		

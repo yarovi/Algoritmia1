@@ -5,7 +5,7 @@ public class Nodo {
 	Object dato;
 	Nodo siguienteNodo;
 	Nodo anteriorNodo;
-
+	int posicion=0;
 	public Nodo(Object x_dato) {
 		this(x_dato, null);
 	}
@@ -67,23 +67,41 @@ public class Nodo {
 	public Nodo buscar(Object ele) {
 
 		Nodo rpta = null;
+		/*
+		 * estto es para cuando es un tipo de dato String
+		 * */
 		if (ele instanceof String) {
 
 			String cadena2 = (String) dato;
 			String cadena = (String) ele;
+			posicion--;
 			if (cadena.compareTo(cadena2) == 0) {
+				/*
+				 * si la comparacion es igual
+				 * se devuelve la referencia del apuntador
+				 * */
 				rpta = this;
 			} else if (siguienteNodo != null) {
-				rpta = siguienteNodo.buscar(ele);
+				siguienteNodo.buscar(ele);
 			}
-		} else if (ele instanceof Integer) {
+		} 
+		/*
+		 * Esto es cuando es un tipo de datos Integer
+		 * */
+		else if (ele instanceof Integer) {
 			Integer valor1 = (Integer) dato;
 			Integer valor2 = (Integer) ele;
+			posicion=posicion-1;
 			if (valor1.compareTo(valor2) == 0) {
-
+				/*
+				 * si la comparacion es igual
+				 * se devuelve la referencia del apuntador
+				 * */
+				
 				rpta = this;
 			} else if (siguienteNodo != null) {
-				rpta = siguienteNodo.buscar(ele);
+				
+				rpta=siguienteNodo.buscar(ele);
 			}
 		}
 		return rpta;
@@ -121,4 +139,10 @@ public class Nodo {
 		this.anteriorNodo = anteriorNodo;
 	}
 
+	public int getposNodo() {
+		return posicion;
+	}
+	public void setposNodo(int pos) {
+		posicion=pos;
+	}
 }
